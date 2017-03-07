@@ -27,14 +27,19 @@
     padding: 41px; border: skyblue dotted 5px;">
   <% for(var i=0; i<adresse.length; i++) {%>
     <li class="client">
-      <span><%= adresse[i].nom %></span>
-      <span><%= adresse[i].prenom %></span>
-      <span><%= adresse[i].telephone %></span>
-      <span><%= adresse[i].ville %></span>
-      <span><%= adresse[i].codepostal %></span>
+    <form action="modifier" method="POST">
+      <input type="text" name="nom" value=<%= adresse[i].nom %>>
+      <input type="text" name="prenom" value=<%= adresse[i].prenom %>>
+      <input type="text" name="telephone" value=<%= adresse[i].telephone %>>
+      <input type="text" name="ville" value=<%= adresse[i].ville %>>
+      <input type="text" name="codepostal" value=<%= adresse[i].codepostal %>>
+      <input type="hidden" name="_id" value=<%= adresse[i]._id %>>
+      <button type="submit">Modifier</button>
+      </form>
+      <a <%= "href=/detruire/"+adresse[i]._id %> >Supprimer</a>
     </li>
   <% } %>
   </ul>
 
-</body>
 </html>
+</body>
