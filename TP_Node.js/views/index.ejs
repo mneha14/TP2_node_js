@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mon Application</title>
+  <!-- LIEN GOOGLE FONTS -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" >
+  <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
+  
+
+</head>
+<!-- AJOUT DES STYLES DIRECTEMENT DAN LE HTML -->
+<body>
+  TP2 Veille technologique
+  <!-- formulaire pour ajouter nouveau document -->
+    <form id="ajout" action="/adresse" method="POST">
+    <input type="text" placeholder="Nom" name="nom">
+    <input type="text" placeholder="Prenom" name="prenom">
+    <input type="text" placeholder="Telephone" name="telephone">
+    <input type="text" placeholder="Ville" name="ville">
+    <input type="text" placeholder="Code Postal" name="codepostal">
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- affiche le contenu de adresse dans des li-->
+  <section class="adresse">
+  <% for(var i=0; i<adresse.length; i++) {%>
+    <li class="client">
+    <form action="modifier" method="POST">
+      <input type="text" name="nom" value=<%= adresse[i].nom %>>
+      <input type="text" name="prenom" value=<%= adresse[i].prenom %>>
+      <input type="text" name="telephone" value=<%= adresse[i].telephone %>>
+      <input type="text" name="ville" value=<%= adresse[i].ville %>>
+      <input type="text" name="codepostal" value=<%= adresse[i].codepostal %>>
+      <input type="text" name="_id" value=<%= adresse[i]._id %>>
+      <button type="submit">Modifier</button>
+      </form>
+      <a <%= "href=/detruire/"+adresse[i]._id %> >Supprimer</a>
+    </li>
+  <% } %>
+  </section>
+
+</html>
+</body>

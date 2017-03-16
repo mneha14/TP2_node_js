@@ -1,0 +1,38 @@
+body {
+  margin: 0 auto;
+  text-align: left;
+  text-decoration: none;
+  width: 70%;
+  margin-top: 10%;
+  font-family: 'Neucha', cursive;
+}
+form {
+  margin-top: 10%;
+  background-color: skyblue;
+  margin-bottom: 10%;
+  padding: 17px;
+}
+section {
+  background-color: aliceblue;
+  padding: 41px;
+  border: skyblue dotted 5px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  margin: 0 auto;
+  justify-content: center;
+}
+button {
+  margin: 12%;
+}
+li {
+  width: 231px;
+  list-style: none;
+  padding: 12px;
+}
+input {
+  width: 170pxpx;
+}
+#ajout {
+  border: aliceblue dotted 5px;
+}
