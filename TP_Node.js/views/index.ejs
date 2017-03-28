@@ -26,14 +26,14 @@
   <section class="adresse">
   <% for(var i=0; i<adresse.length; i++) {%>
     <li class="client">
-    <form action="modifier" method="POST" id="formulaire">
+    <form id="formulaire">
       <input type="text" name="nom" value=<%= adresse[i].nom %>>
       <input type="text" name="prenom" value=<%= adresse[i].prenom %>>
       <input type="text" name="telephone" value=<%= adresse[i].telephone %>>
       <input type="text" name="ville" value=<%= adresse[i].ville %>>
       <input type="text" name="codepostal" value=<%= adresse[i].codepostal %>>
       <input type="text" name="_id" value=<%= adresse[i]._id %>>
-      <button type="submit">Modifier</button>
+      <p class="modifier">Modifier</p>
       </form>
       <a <%= "href=/detruire/"+adresse[i]._id %> >Supprimer</a>
     </li>
@@ -44,35 +44,47 @@
 
 <!-- AJAX -->
 <script>
-//inputs du formulaire
-var elmLigneDiv = document.getElementById('formulaire');
-var 
-xhr = new XMLHttpRequest();
-xhr.open('POST', "modifier", true);
-data = { 
- "modif":{
- "nom" : elmLigneDiv[0].value,
- "prenom" : elmLigneDiv[1].value,
- "telephone" : elmLigneDiv[2].value,
- "ville" : elmLigneDiv[3].value,
- "codepostal" : elmLigneDiv[4].value
- },
- "_id" : elmLigneDiv[3].value 
+
+var boutonModifier = document.getElementsByClassName("modifier");//tous les boutons modifier
+var elmLigneDiv = document.getElementById('formulaire');//inputs du formulaire
+
+//attribue un addEventListener au boutons
+for(i=0;i< boutonModifier.length;i++){
+  boutonModifier[i].addEventListener("click", Modifier.bind(this), false);
 }
 
-sData = JSON.stringify(data);//transforme le JSON en string
-xhr.setRequestHeader('Content-type', 'application/json');
-console.log(sData);
-xhr.send(sData);//envoie la data
-xhr.addEventListener("readystatechange", traiterRequest, false);
+//MODIFIER
+function Modifier(){
+  console.log(this.value);
+  xhr = new XMLHttpRequest();
+  xhr.open('POST', "modifier", true);
+  data = { 
+   "modif":{
+   "nom" : elmLigneDiv[0].value,
+   "prenom" : elmLigneDiv[1].value,
+   "telephone" : elmLigneDiv[2].value,
+   "ville" : elmLigneDiv[3].value,
+   "codepostal" : elmLigneDiv[4].value
+   },
+   "_id" : elmLigneDiv[5].value 
+  };
 
+
+  sData = JSON.stringify(data);//transforme le JSON en string
+  xhr.setRequestHeader('Content-type', 'application/json');
+  console.log(sData);
+  xhr.send(sData);//envoie la data
+  xhr.addEventListener("readystatechange", traiterRequest, false);
+
+}//fin fonction modifier
 
 //REPONSE
 function traiterRequest(e)
  {
- console.log("xhr.readyState = " + xhr.readyState)
+  e.preventDefault();
+ /*console.log("xhr.readyState = " + xhr.readyState)
  console.log("xhr.status = " + xhr.status)
- /*if(xhr.readyState == 4 && xhr.status == 200)//si la requete a fonctionné
+ if(xhr.readyState == 4 && xhr.status == 200)//si la requete a fonctionné
  {
  console.log('ajax fonctionne')
  //var response = JSON.parse(xhr.responseText);
