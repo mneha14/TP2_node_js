@@ -63,13 +63,12 @@ function Modifier(){
   xhr = new XMLHttpRequest();
   xhr.open('POST', "modifier", true);
   data = { 
-   "modif":{
+   
    "nom" : elemInput[0].value,
    "prenom" : elemInput[1].value,
    "telephone" : elemInput[2].value,
    "ville" : elemInput[3].value,
-   "codepostal" : elemInput[4].value
-   },
+   "codepostal" : elemInput[4].value,
    "_id" : elemInput[5].value 
   };
 
@@ -86,9 +85,9 @@ function Modifier(){
 function traiterRequest(e)
  {
   e.preventDefault();
- /*console.log("xhr.readyState = " + xhr.readyState)
+ console.log("xhr.readyState = " + xhr.readyState)
  console.log("xhr.status = " + xhr.status)
- if(xhr.readyState == 4 && xhr.status == 200)//si la requete a fonctionné
+ /*if(xhr.readyState == 4 && xhr.status == 200)//si la requete a fonctionné
  {
  console.log('ajax fonctionne')
  //var response = JSON.parse(xhr.responseText);

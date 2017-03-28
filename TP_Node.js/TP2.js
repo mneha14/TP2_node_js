@@ -8,6 +8,7 @@ const ObjectID = require('mongodb').ObjectID;
 app.set('view engine', 'ejs'); // générateur de template 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static('public'))  // pour utiliser le dossier public
+app.use(bodyParser.json())
 
 var db // variable qui contiendra le lien sur la BD
 
@@ -35,7 +36,7 @@ app.post('/adresse',  (req, res) => {
 app.post('/modifier', (req, res) => {
 var id = req.params.id
  //console.log(id)
- console.log(req.body)
+ console.log("req.body.nom" + req.body.nom)
  db.collection('adresse').findOneAndUpdate({"_id": ObjectID(req.body._id)}, {"nom" : req.body.nom, "prenom" : req.body.prenom, "telephone" : req.body.telephone, "ville" : req.body.ville, "codepostal" : req.body.codepostal}, (err, resultat) => {
 
 if (err) return console.log(err)
