@@ -50,23 +50,27 @@ var elmLigneDiv = document.getElementById('formulaire');//inputs du formulaire
 
 //attribue un addEventListener au boutons
 for(i=0;i< boutonModifier.length;i++){
-  boutonModifier[i].addEventListener("click", Modifier.bind(this), false);
+  boutonModifier[i].addEventListener("click", Modifier, false);
 }
 
 //MODIFIER
 function Modifier(){
-  console.log(this.value);
+  console.log(this.parentNode.tagName);
+  parent = this.parentNode;
+  elemInput = parent.getElementsByTagName('input');
+  console.log(elemInput[1].value);
+
   xhr = new XMLHttpRequest();
   xhr.open('POST', "modifier", true);
   data = { 
    "modif":{
-   "nom" : elmLigneDiv[0].value,
-   "prenom" : elmLigneDiv[1].value,
-   "telephone" : elmLigneDiv[2].value,
-   "ville" : elmLigneDiv[3].value,
-   "codepostal" : elmLigneDiv[4].value
+   "nom" : elemInput[0].value,
+   "prenom" : elemInput[1].value,
+   "telephone" : elemInput[2].value,
+   "ville" : elemInput[3].value,
+   "codepostal" : elemInput[4].value
    },
-   "_id" : elmLigneDiv[5].value 
+   "_id" : elemInput[5].value 
   };
 
 
