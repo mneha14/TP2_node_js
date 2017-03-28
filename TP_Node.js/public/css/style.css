@@ -16,10 +16,15 @@ section {
   background-color: aliceblue;
   padding: 41px;
   border: skyblue dotted 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   text-align: center;
   margin: 0 auto;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 button {
@@ -28,10 +33,11 @@ button {
 li {
   width: 231px;
   list-style: none;
+  /*flex-grow: 4;*/
   padding: 12px;
 }
 input {
-  width: 170pxpx;
+  width: 170px;
 }
 #ajout {
   border: aliceblue dotted 5px;

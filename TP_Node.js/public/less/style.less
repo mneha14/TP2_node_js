@@ -1,10 +1,11 @@
+
 body {
 	margin: 0 auto;
-	text-align: left;
-	text-decoration: none;
-	width: 70%;
-	margin-top: 10%;
-	font-family: 'Neucha',cursive;
+  text-align: left;
+  text-decoration: none;
+  width: 70%;
+  margin-top: 10%;
+  font-family: 'Neucha', cursive;
 
 	}
 
@@ -20,11 +21,16 @@ section {
 	background-color: aliceblue;
 	padding: 41px;
 	border: skyblue dotted 5px;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
 	text-align: center;
 	margin:0 auto;
-	justify-content:center;
+	-webkit-box-pack:center;
+	    -ms-flex-pack:center;
+	        justify-content:center;
 
 
 	}
@@ -37,12 +43,12 @@ button{
 li{
 	width:231px;
 	list-style:none;
-	//flex-grow: 4;
+	/*flex-grow: 4;*/
 	padding: 12px;
 }
 
 input {
-	width:170pxpx;
+	width:170px;
 }
 
 #ajout{

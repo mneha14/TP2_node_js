@@ -44,24 +44,44 @@
 
 <!-- AJAX -->
 <script>
+//inputs du formulaire
 var elmLigneDiv = document.getElementById('formulaire');
-
+var 
 xhr = new XMLHttpRequest();
 xhr.open('POST', "modifier", true);
 data = { 
  "modif":{
- "nom" : elmLigneDiv[0].innerHTML,
- "prenom" : elmLigneDiv[1].innerHTML,
- "telephone" : elmLigneDiv[2].innerHTML,
- "ville" : elmLigneDiv[2].innerHTML,
- "codepostal" : elmLigneDiv[2].innerHTML,
- "_id" : elmLigneDiv[3].innerHTML
- }
+ "nom" : elmLigneDiv[0].value,
+ "prenom" : elmLigneDiv[1].value,
+ "telephone" : elmLigneDiv[2].value,
+ "ville" : elmLigneDiv[3].value,
+ "codepostal" : elmLigneDiv[4].value
+ },
+ "_id" : elmLigneDiv[3].value 
 }
-sData = JSON.stringify(data);
+
+sData = JSON.stringify(data);//transforme le JSON en string
 xhr.setRequestHeader('Content-type', 'application/json');
-xhr.send(sData);
-//xhr.addEventListener("readystatechange", traiterRequest, false);
+console.log(sData);
+xhr.send(sData);//envoie la data
+xhr.addEventListener("readystatechange", traiterRequest, false);
+
+
+//REPONSE
+function traiterRequest(e)
+ {
+ console.log("xhr.readyState = " + xhr.readyState)
+ console.log("xhr.status = " + xhr.status)
+ /*if(xhr.readyState == 4 && xhr.status == 200)//si la requete a fonctionné
+ {
+ console.log('ajax fonctionne')
+ //var response = JSON.parse(xhr.responseText);
+ //console.log(xhr.responseText);
+ elmChamp_id.value = response[0]._id;
+ elmLigne.style.border = "5px";
+ elmLigne.style.borderColor = "#0f0";
 console.log("lol");
+}*/
+ }
 </script>
 </body>
